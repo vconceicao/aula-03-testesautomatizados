@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/produtos")
 public class ProdutoController {
@@ -29,4 +31,11 @@ public class ProdutoController {
         return new ResponseEntity<>(produto, HttpStatus.OK);
 
     }
+
+    @GetMapping
+    public ResponseEntity<List<Produto>> listarProdutos() {
+        List<Produto> produtos = produtoService.listarProdutos();
+        return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+    }
+
 }
